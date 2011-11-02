@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-04-26 11:28:34 Yu Li>
+;; Time-stamp: <2011-11-02 17:55:23 Yu Li>
 ;
 ; .emacs of Rick Xing
 ;
@@ -31,6 +31,14 @@
 
 ;;(setq outline-minor-mode-prefix [(control o)])
 
+
+;;;; 引入系统变量
+;; 输入法需要
+(setenv "LC_CTYPE" "zh_CN.utf-8")
+(setenv "EDITOR" "/usr/bin/emacs")
+
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; remove menu bar
 (menu-bar-mode -1)
@@ -125,10 +133,6 @@
 ;; setup default user information
 (setq user-full-name "Xing Jian")
 (setq user-mail-address "oreofish@hotmail.com")
-
-
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 
 ;; after .emacs is loaded,foreground/background face is overrided by
@@ -242,32 +246,193 @@
 
 (require 'rails)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; CEDET START;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'cedet)
 
-(if (= emacs-major-version 21)
-	(load-file "~/.emacs.d21/ido.elc")
-)
-(if (= emacs-major-version 21)
-	(load-file "~/.emacs.d21/ibuffer.elc")
-)
+;;;; Helper tools.  "load all emacs builtin cedet features needed by hand, so no external cedet needed"
+(custom-set-variables
+'(semantic-default-submodes (quote (global-semantic-decoration-mode
+				    global-semantic-idle-completions-mode
+				    global-semantic-idle-scheduler-mode
+				    ;;global-semantic-highlight-func-mode
+				    global-semantic-stickyfunc-mode
+				    global-semanticdb-minor-mode
+				    global-semantic-idle-summary-mode
+				    global-semantic-mru-bookmark-mode)))
+'(semantic-idle-scheduler-idle-time 3))
+(semantic-mode t)
+(setq semantic-idle-work-update-headers-flag t)
+
+; smart complitions
+(require 'semantic/ia)
+(setq-mode-local c-mode semanticdb-find-default-throttle
+'(project unloaded system recursive))
+(setq-mode-local c++-mode semanticdb-find-default-throttle
+'(project unloaded system recursive))
+
+;;;; TAGS Menu
+(defun my-semantic-hook ()
+(imenu-add-to-menubar "TAGS"))
+
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+;;;; Semantic DataBase存储位置
+(setq semanticdb-default-save-directory
+(expand-file-name "~/.emacs.d/semanticdb"))
+
+;;;;;;; 代码跳转
+(require 'semantic/analyze/refs)
+
+(defadvice push-mark (around semantic-mru-bookmark activate)
+  "Push a mark at LOCATION with NOMSG and ACTIVATE passed to `push-mark'.
+If `semantic-mru-bookmark-mode' is active, also push a tag onto
+the mru bookmark stack."
+  (semantic-mrub-push semantic-mru-bookmark-ring
+                      (point)
+                      'mark)
+  ad-do-it)
+
+(defun semantic-ia-fast-jump-back ()
+  (interactive)
+  (if (ring-empty-p (oref semantic-mru-bookmark-ring ring))
+      (error "Semantic Bookmark ring is currently empty"))
+  (let* ((ring (oref semantic-mru-bookmark-ring ring))
+         (alist (semantic-mrub-ring-to-assoc-list ring))
+         (first (cdr (car alist))))
+    (if (semantic-equivalent-tag-p (oref first tag) (semantic-current-tag))
+        (setq first (cdr (car (cdr alist)))))
+    (semantic-mrub-switch-tags first)))
+
+
+
+
+
+;; 使用 gnu global 的TAGS。
+(require 'semantic/db-global)
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+
+ ;; (global-senator-minor-mode 1)
+ ;; (require 'semantic-decorate-include)
+
+ ;; (require 'gtags)
+ ;; (semanticdb-enable-gnu-global-databases 'c-mode)
+ ;; (semanticdb-enable-gnu-global-databases 'c++-mode)
+
+ ;;(setq semantic-complete-inline-analyzer-displayor-class
+ ;;'semantic-displayor-tooltip)
+ (setq semantic-complete-inline-analyzer-displayor-class
+       'semantic-displayor-ghost)
+ (defun my-cedet-hook ()
+   (local-set-key [(meta return)] 'semantic-ia-complete-symbol)
+   (local-set-key "\C-cm" 'semantic-ia-complete-tip)
+   ;; (local-set-key "\C-c." 'senator-complete-symbol)
+
+   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
+   (local-set-key "\C-c=" 'semantic-decoration-include-visit)
+
+   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+   (local-set-key "\C-co" 'semantic-mrub-switch-tags)
+   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+   (local-set-key "\C-ci" 'semantic-ia-show-doc)
+
+   )
+
+ (add-hook 'c-mode-common-hook 'my-cedet-hook)
+ (add-hook 'lisp-mode-hook 'my-cedet-hook)
+ (add-hook 'python-mode-hook 'my-cedet-hook)
+ (add-hook 'ruby-mode-hook 'my-cedet-hook)
+ (add-hook 'emacs-lisp-mode-hook 'my-cedet-hook)
+
+
+;;;; Include settings
+(require 'semantic/bovine/gcc)
+(require 'semantic/bovine/c)
+
+(defconst cedet-user-include-dirs
+(list ".." "../include" "../inc" "../common" "../public" "."
+"../.." "../../include" "../../inc" "../../common" "../../public"))
+
+(setq cedet-sys-include-dirs (list
+"/usr/include"
+"/usr/include/bits"
+"/usr/include/glib-2.0"
+"/usr/include/gnu"
+"/usr/include/gtk-2.0"
+"/usr/include/gtk-2.0/gdk-pixbuf"
+"/usr/include/gtk-2.0/gtk"
+"/usr/local/include"
+"/usr/local/include"))
+
+(let ((include-dirs cedet-user-include-dirs))
+(setq include-dirs (append include-dirs cedet-sys-include-dirs))
+(mapc (lambda (dir)
+(semantic-add-system-include dir 'c++-mode)
+(semantic-add-system-include dir 'c-mode))
+include-dirs))
+
+(setq semantic-c-dependency-system-include-path "/usr/include/")
+
+;; other header file directories
+(setq qt4-base-dir "/usr/include/")
+(dolist (path '("Qt" "QtCore" "QtGui" "QtNetwork" "QtDBus" "QtMultimedia"
+                "QtXmlPatterns" "QtXml" "QtWebKit" "QtScript" "QtSql" "QtTest"
+                "QtAssistant" "QtOpenGL" "QtSvg" "Qt3Support"))
+(semantic-add-system-include (concat qt4-base-dir path) 'c++-mode))
+
+(if (not (boundp 'semantic-lex-c-preprocessor-symbol-file))
+   (setq semantic-lex-c-preprocessor-symbol-file
+          '("/usr/include/c++/4.6.0/i686-pc-linux-gnu/bits/c++config.h")))
+
+ (mapcar
+  (lambda (path) (add-to-list 'semantic-lex-c-preprocessor-symbol-file path))
+  (list (concat qt4-base-dir "/Qt/qconfig.h")
+        (concat qt4-base-dir "/Qt/qconfig-dist.h")
+        (concat qt4-base-dir "/Qt/qglobal.h")))
+ ;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file
+ ;;              (concat qt4-base-dir "/Qt/qconfig.h"))
+ ;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file
+ ;;              (concat qt4-base-dir "/Qt/qconfig-dist.h"))
+ ;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file
+ ;;              (concat qt4-base-dir "/Qt/qglobal.h"))
+
+
+ (setq gtags-mode-hook
+       '(lambda ()
+          (setq gtags-pop-delete t)
+          (setq gtags-path-style 'absolute)
+          (local-set-key "\M-." 'gtags-find-tag-from-here)))
+
+ ;; Enable EDE (Project Management) features
+; (global-ede-mode t)
+; (ede-cpp-root-project "rf-backup"
+;                       :name "rf-backup"
+;                       :file "~/data/online/kde/backup/CMakeLists.txt"
+;                       :include-path '("/lib"
+;                                       "/libharefs/src"
+;                                       "/sync-agent/src"))
+; (ede-cpp-root-project "sourceinsight"
+;                       :name "sinsight"
+;                       :file "~/data/stage/sourceinsight/CMakeLists.txt"
+;                       :include-path '("/"))
+;
+; (ede-cpp-root-project "loopy"
+;                       :name "loopy"
+;                       :file "~/data/stage/loopy-github/CMakeLists.txt"
+;                       :include-path '("/src"))
+;
+; (ede-cpp-root-project "qtetris"
+;                       :name "qtetris"
+;                       :file "~/data/stage/qtetris/Makefile"
+;                       :include-path '("/"))
+; )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; CEDET END ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 ;(load-file "~/.emacs.d/mc.el")
 ;(load-file "~/.emacs.d/nc.el")
 (load-file custom-file)
 
-;; Load CEDET
-;(load-file "/backup/tools/cedet-1.0beta3b/common/cedet.el")
-;; Enabling SEMANTIC minor modes.  See semantic/INSTALL for more ideas.
-;(semantic-load-enable-code-helpers)
-;; ECB
-;(add-to-list 'load-path "/backup/tools/ecb-2.31/")
-;(require 'ecb)
-
-;; load gdb-ui
-;;(setq load-path
-;;      (cons "~/.emacs.d/gud" load-path))
-;;(load-library "tool-bar.elc")
-;;(load-library "fortran.elc")
-;;(load-library "gud.elc")
-; (load-library "gdb-ui.elc")
 
 
 ;(load-file "~/.emacs.d/eshell-tab.el")
@@ -473,9 +638,6 @@ int main(int argc, char* argv[])
 ;; enable highlighted text deletion
 (delete-selection-mode t)
  
-(setq ansi-color-for-comint t)
-(ansi-color-for-comint-mode-on)
-
 ;; display line and column number
 (setq column-number-mode t)
 (setq line-number-mode t)
@@ -527,8 +689,6 @@ int main(int argc, char* argv[])
       )
 
 ;;; load required libraries
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (autoload 'ruby-mode "ruby-mode" "Ruby editing mode." t)
 ;(autoload 'gnugo "gnugo" "GNU Go" t)
@@ -549,7 +709,8 @@ current window."
   (end-of-buffer)
 )
 
-;;(require 'xcscope)
+;; cscope.代码跳转etags基本不用，cscope基本上可以满足的
+;(require 'xcscope)
 
 (require 'cc-mode)
 (c-set-offset 'inline-open 0)
@@ -593,6 +754,27 @@ current window."
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
+;;;;; C-mode-hooks 对于C和C++的struct/class结构，函数semantic-complete-self-insert 可以插入类或结构中的成员变量，将至绑定到"."或者">"，会加速代码编写的效率
+;(defun yyc/c-mode-keys ()
+;"description"
+;;; Semantic functions.
+;(semantic-default-c-setup)
+;(local-set-key "/C-c?" 'semantic-ia-complete-symbol-menu)
+;(local-set-key "/C-cb" 'semantic-mrub-switch-tags)
+;(local-set-key "/C-cR" 'semantic-symref)
+;(local-set-key "/C-cj" 'semantic-ia-fast-jump)
+;(local-set-key "/C-cp" 'semantic-ia-show-summary)
+;(local-set-key "/C-cl" 'semantic-ia-show-doc)
+;(local-set-key "/C-cr" 'semantic-symref-symbol)
+;(local-set-key "/C-c/" 'semantic-ia-complete-symbol)
+;(local-set-key [(control return)] 'semantic-ia-complete-symbol)
+;(local-set-key "." 'semantic-complete-self-insert)
+;(local-set-key ">" 'semantic-complete-self-insert)
+;;; Indent or complete
+;(local-set-key [(tab)] 'indent-or-complete)
+;)
+;(add-hook 'c-mode-common-hook 'yyc/c-mode-keys)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; for binding [return] to 'newline-and-indent function
 ;;; disable autobackup
