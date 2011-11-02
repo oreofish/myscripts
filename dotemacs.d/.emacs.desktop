@@ -1,0 +1,358 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Wed May 14 15:29:48 2008
+;; Desktop file format version 206
+;; Emacs version 22.1.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring '("<widget" "<class" "pai" "news" "builddir" "usr" "$1" "svn" "svn up" "version" "head_version" "chdir" "dir.chdir" "init"))
+(setq register-alist '((8 file-query "/mnt/redhat/home/root/redflag/desktop/kmake/src/kmake.h" 2038)))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/root/Desktop/MPlayer-1.0rc2/asxparser.h"
+  "asxparser.h"
+  'c++-mode
+  '(abbrev-mode)
+  775
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/usr/src/kernels/2.6.22.6-1-i686/include/asm/vm86.h"
+  "vm86.h"
+  'c++-mode
+  '(abbrev-mode)
+  5536
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/usr/src/kernels/2.6.22.6-1-i686/include/asm/emergency-restart.h"
+  "emergency-restart.h"
+  'c++-mode
+  '(abbrev-mode)
+  114
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/usr/src/kernels/2.6.22.6-1-i686/kernel/irq/Makefile"
+  "Makefile"
+  'makefile-gmake-mode
+  nil
+  193
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode . t) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/autoscripts/svn2srpm.sh"
+  "svn2srpm.sh"
+  'sh-mode
+  nil
+  3077
+  '(2940 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (overwrite-mode)))
+
+(desktop-create-buffer 206
+  "/root/redflag/autoscripts/updateall.sh"
+  "updateall.sh"
+  'sh-mode
+  nil
+  723
+  '(665 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/autoscripts/svn2others.sh"
+  "svn2others.sh"
+  'sh-mode
+  nil
+  4136
+  '(4127 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/tmp/updatepkg.rb"
+  "updatepkg.rb"
+  'ruby-mode
+  '(ruby-electric-mode)
+  2228
+  '(2087 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . mule-utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/desktop/libeasyrpm/src/easyrpm_part.cpp"
+  "easyrpm_part.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  304
+  '(20766 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/libeasyrpm/src/libeasyrpmview.h"
+  "libeasyrpmview.h"
+  'c++-mode
+  '(abbrev-mode)
+  176
+  '(201 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/commonui.cpp"
+  "commonui.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  2638
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/kmake.cpp"
+  "kmake.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  8572
+  '(6537 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/commonui.h"
+  "commonui.h"
+  'c++-mode
+  '(abbrev-mode)
+  2216
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/kmake.h"
+  "kmake.h"
+  'c++-mode
+  '(abbrev-mode)
+  1268
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/cmakefile.cpp"
+  "cmakefile.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  16332
+  '(14703 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/cmakefile.h"
+  "cmakefile.h"
+  'c++-mode
+  '(abbrev-mode)
+  3001
+  '(2895 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/cmdlist.h"
+  "cmdlist.h"
+  'c++-mode
+  '(abbrev-mode)
+  210
+  '(5970 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/cmdlist.cxx"
+  "cmdlist.cxx"
+  'c++-mode
+  '(abbrev-mode)
+  400
+  '(13729 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/gen_cmd_list.rb"
+  "gen_cmd_list.rb"
+  'ruby-mode
+  '(ruby-electric-mode)
+  410
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . mule-utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/specfile.h"
+  "specfile.h"
+  'c++-mode
+  '(abbrev-mode)
+  1236
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/specfile.cpp"
+  "specfile.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  1805
+  '(1291 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/gen_spec_cmd.rb"
+  "gen_spec_cmd.rb"
+  'ruby-mode
+  '(ruby-electric-mode)
+  117
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . mule-utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/kmake/src/speccmd.cxx"
+  "speccmd.cxx"
+  'c++-mode
+  '(abbrev-mode)
+  247
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/root/redflag/desktop/libsam/src/operation.h"
+  "operation.h"
+  'c++-mode
+  '(abbrev-mode)
+  60
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/desktop/libeasyrpm/src/libeasyrpmview.cpp"
+  "libeasyrpmview.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  3144
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/desktop/libeasyrpm/src/libeasyrpm.cpp"
+  "libeasyrpm.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  8561
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/desktop/libeasyrpm/src/propertyui.h"
+  "propertyui.h"
+  'c++-mode
+  '(abbrev-mode)
+  765
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/old/kdelibs/3.5.7/main-kdelibs-3.5.7/khtml/ecma/kjs_window.cpp"
+  "kjs_window.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  37847
+  '(37905 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/old/kdelibs/3.5.7/main-kdelibs-3.5.7/khtml/ecma/kjs_css.cpp"
+  "kjs_css.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  13502
+  '(13516 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/old/kdelibs/3.5.7/main-kdelibs-3.5.7/khtml/ecma/kjs_dom.cpp"
+  "kjs_dom.cpp"
+  'c++-mode
+  '(abbrev-mode)
+  39609
+  '(39623 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/redflag/old/kdelibs/3.5.7/main-kdelibs-3.5.7/khtml/ecma/kjs_window.cpp.orig"
+  "kjs_window.cpp.orig"
+  'c++-mode
+  '(abbrev-mode)
+  37791
+  '(37805 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+

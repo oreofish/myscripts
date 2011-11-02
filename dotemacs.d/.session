@@ -1,0 +1,12 @@
+;;; Automatically generated on Sat Oct 29 10:31:23 2011
+;;; Invoked by jianxing@xing using 23.2.94.1
+(setq-default kill-ring '(#("
+
+
+" 0 3 (fontified t))))
+(setq-default file-name-history '("/usr/include/QtCore/qmap.h" "~/git/powercalc/StockTracker/dataformat.hpp" "~/git/powercalc/StockTracker/stockdaybar.cpp" "stockdaybar.cpp" "~/git/powercalc/StockTracker/stockdaybar.hpp" "stockdaybar.hpp" "~/git/powercalc/StockTracker/config.c" "config.c" "~/git/powercalc/StockTracker/mini_c/mini_c.hpp" "mini_c/mini_c.hpp" "~/git/powercalc/StockTracker/boost/spirit/home/support/meta_compiler.hpp" "~/git/powercalc/StockTracker/boost/spirit/home/qi/detail/parse.hpp" "~/git/powercalc/StockTracker/boost/spirit/home/qi/parse.hpp" "/usr/include/QtCore/qatomic_i386.h" "/usr/include/QtCore/qbytearray.h" "/usr/include/QtCore/qstring.h" "~/git/powercalc/StockTracker/runnableformula.hpp" "stocktracker.hpp" "~/git/powercalc/StockTracker/runnableformula.cpp" "runnableformula.cpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/calc7/calc7b.hpp" "calc7b.hpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/calc7/calc7b.cpp" "calc7b.cpp" "calc7.hpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/mini_c/mini_cd.hpp" "mini_cd.hpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/mini_c/mini_cb.hpp" "../mini_c/mini_cb.hpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/calc7/calc7.cpp" "calc7.cpp" "~/rpmbuild/BUILD/boost_1_46_1/libs/spirit/example/qi/calc7/calc7.hpp" "test.cpp"))
+(setq-default command-history '((eshell nil)))
+(setq-default extended-command-history '("eshell"))
+(setq-default regexp-search-ring '("conn" "matchallargs" "runarged" "onse" "onsearch" "onS" "onsearchdone" "searchdone" "_codemap" "1A" "src" "err" "load" "function" "a" "this header is deprecated\\. please use: boost/spirit"))
+(setq-default serial-name-history '("/dev/ttyS0"))
+(setq-default serial-speed-history '("9600" "1200" "2400" "4800" "14400" "19200" "28800" "38400" "57600" "115200"))
