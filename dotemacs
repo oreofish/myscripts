@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-02 17:55:23 Yu Li>
+;; Time-stamp: <2011-11-02 18:10:53 Yu Li>
 ;
 ; .emacs of Rick Xing
 ;
@@ -122,17 +122,11 @@
 
 ;; setup various dot file's location
 (setq bookmark-default-file "~/.emacs.d/_emacs.bmk")     
-(setq abbrev-file-name "~/.emacs.d/.abbrev.defs")
-(setq custom-file "~/.emacs.d/_emacs.custom.elc")
-(setq bbdb-file "~/.emacs.d/.bbdb")
-(setq todo-file-do "~/.emacs.d/todo-do")
-(setq todo-file-done "~/.emacs.d/todo-done")
-(setq todo-file-top "~/.emacs.d/todo-top")
-(setq diary-file "~/.emacs.d/.diary")
+(setq custom-file "~/.emacs.d/_emacs.custom.el")
 
 ;; setup default user information
 (setq user-full-name "Xing Jian")
-(setq user-mail-address "oreofish@hotmail.com")
+(setq user-mail-address "oreofish@gmail.com")
 
 
 ;; after .emacs is loaded,foreground/background face is overrided by
@@ -432,7 +426,6 @@ include-dirs))
 ;(load-file "~/.emacs.d/mc.el")
 ;(load-file "~/.emacs.d/nc.el")
 (load-file custom-file)
-
 
 
 ;(load-file "~/.emacs.d/eshell-tab.el")
