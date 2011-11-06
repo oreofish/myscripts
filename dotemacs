@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-02 18:10:53 Yu Li>
+;; Time-stamp: <2011-11-06 19:48:28 Yu Li>
 ;
 ; .emacs of Rick Xing
 ;
@@ -789,6 +789,9 @@ current window."
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
 ;;; for ruby mode
+(setq load-path (cons "~/.emacs.d/rdebug" load-path))
+(require 'rdebug)
+
 (setq interpreter-mode-alist (
                               append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
