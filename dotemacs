@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-06 19:48:28 Yu Li>
+;; Time-stamp: <2011-11-06 20:54:12 Yu Li>
 ;
 ; .emacs of Rick Xing
 ;
@@ -658,7 +658,7 @@ int main(int argc, char* argv[])
 ;;(set-face-background 'default "midnightblue")
 ;;(set-face-foreground 'default "white")
 ;; parent match
-(set-face-background 'show-paren-match-face "DarkSlateGray4") 
+;(set-face-background 'show-paren-match-face "DarkSlateGray4") 
 
 ;;; END MISC SETTING
 
