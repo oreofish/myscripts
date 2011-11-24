@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-23 14:39:31 Yu Li>
+;; Time-stamp: <2011-11-24 18:28:07 Rick Xing>
 ;
 ; .emacs of Rick Xing
                                         ;
@@ -180,6 +180,8 @@
 ;(set-frame-font "Courier 10 Pitch-12")
 (set-frame-font "Dejavu Sans Mono-9")
 ;(set-default-font "-misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-1")
+
+(load-file "~/.emacs.d/nxhtml/autostart.el")
 
 
 ;; load other settings
