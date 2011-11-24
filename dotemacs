@@ -1,8 +1,8 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-06 20:54:12 Yu Li>
+;; Time-stamp: <2011-11-23 14:39:31 Yu Li>
 ;
 ; .emacs of Rick Xing
-;
+                                        ;
 
 ; F1 - ibuffer
 ; F2 - 2Column
@@ -41,7 +41,7 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; remove menu bar
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 
 ;; hide toolbar
 (tool-bar-mode -1)
@@ -397,14 +397,16 @@ include-dirs))
           (setq gtags-path-style 'absolute)
           (local-set-key "\M-." 'gtags-find-tag-from-here)))
 
- ;; Enable EDE (Project Management) features
-; (global-ede-mode t)
-; (ede-cpp-root-project "rf-backup"
-;                       :name "rf-backup"
-;                       :file "~/data/online/kde/backup/CMakeLists.txt"
-;                       :include-path '("/lib"
-;                                       "/libharefs/src"
-;                                       "/sync-agent/src"))
+;; Enable EDE (Project Management) features
+ (global-ede-mode t)
+ (ede-cpp-root-project "rails-sample"
+                       :name "rails-sample"
+                       :file "~/git/sample/README"
+                       :include-path '("/app"
+                                       "/config"
+                                       "/script"
+                                       "/spec"
+                                       "/lib"))
 ; (ede-cpp-root-project "sourceinsight"
 ;                       :name "sinsight"
 ;                       :file "~/data/stage/sourceinsight/CMakeLists.txt"
