@@ -12,9 +12,9 @@ class StorageAnalyser
     @table = 'storage'
     @outfile = outfile
     @xlCenter = -4108
-    
+
     @table_sql = "create table #{@table} ( id INTEGER PRIMARY KEY,"
-    @table_sql += 'xilie STRING,' # 系列
+    @table_sql += 'xilie STRING,' # 系列 
     @table_sql += 'store_date STRING,' # 预计入库
     @table_sql += 'onboard_date STRING,' # 预计上市
     @table_sql += 'type_desc STRING,' # 款式描述
@@ -29,10 +29,13 @@ class StorageAnalyser
     @table_sql += 'order_price NUMERIC,' # 订单金额
     @table_sql += 'singapore_num NUMERIC,' # 新加坡订单数
     @table_sql += 'singapore_price NUMERIC,' # 新加坡单价
-    @table_sql += 'macau_num NUMERIC,' # 澳门订单数
+    @table_sql += 'macau_num STRING,' # 澳门订单数
     @table_sql += 'macau_price NUMERIC,' # 澳门单价
-    @table_sql += 'sartre_num NUMERIC,' # 沙特订单数
-    @table_sql += 'sartre_price NUMERIC);' # 沙特单价
+    @table_sql += 'a_num STRING,' # 沙特订单数
+    @table_sql += 'b_num NUMERIC,'
+    @table_sql += 'c_num STRING,'
+    @table_sql += 'd_num NUMERIC,'
+    @table_sql += 'e_price STRING);' # 沙特单价
     
     @db = SQLite3::Database.new(':memory:') #('store.db') (':memory:')
     @db.execute( @table_sql )
@@ -78,6 +81,7 @@ class StorageAnalyser
     workbook.Worksheets.each do |sheet|
       #skip sheets older than DB
       next if date >= sheet.name
+      next if sheet.name[0..1] != '11'
       p "Processing sheet: #{sheet.name} ... "
 
       #sheet.Columns("A:H").Select
@@ -85,29 +89,29 @@ class StorageAnalyser
       i = 1
       prev_row = nil
       while true
-        row = sheet.range("A#{i}:R#{i}").value[0] # N is the last column of storage sheet
+        row = sheet.range("A#{i}:U#{i}").value[0] # U is the last column of storage sheet
         row.each {|it| it.encode!("gbk") if it.class == 'String' }
         prev_row = row if prev_row == nil
 
         # ending if there is no color and color_num
         break if row[0] == nil and row[9] == nil and row[10] == nil and row[12] == nil
-        if row[9] == '颜色' or (row[12] != nil and row[9] == nil) # 标题或统计行
-          # prev_row = nil
-          i += 1
-          next
-        end
+#        if row[9] == '颜色' or (row[12] != nil and row[9] == nil) # 标题或统计行
+#          # prev_row = nil
+#          i += 1
+#          next
+#        end
 
-        # fill empty field
-        0.upto(prev_row.count - 1) do |i|
-          row[i] = prev_row[i] if row[i] == nil or row[i] == ''
-        end
+#        # fill empty field
+#        0.upto(prev_row.count - 1) do |i|
+#          row[i] = prev_row[i] if row[i] == nil or row[i] == ''
+#        end
         
         # save row to DB
         insert = "insert into #{@table} values (NULL, "
         insert += " ?, ?, ?, ?, ?, "
         insert += " ?, ?, ?, ?, ?, "
         insert += " ?, ?, ?, ?, ?, "
-        insert += " ?, ?, ?, ?"
+        insert += " ?, ?, ?, ?, ?, ?, ?"
         insert += ")"
         @db.execute(insert, row)
 #        if i < 4
@@ -141,36 +145,39 @@ class StorageAnalyser
     xilies.each do |xilie|
       xilie[0].encode!('gbk') if xilie[0].class == 'String'
       products = Hash.new
-      records = @db.execute("select design_num, national_type, price, order_num, store_date, type_desc, intl_type, size, singapore_price, macau_price, sartre_price, color, color_num from #{@table} where xilie='#{xilie[0]}'")
+      records = @db.execute("select * from #{@table} where xilie='#{xilie[0]}'")
       records.each do |record|
         record.each { |it| it.encode!('gbk') if it.class == 'String' }
-        kuanhao = record[6]
+        kuanhao = record[5]
         if products.has_key?(kuanhao)
           block = products[kuanhao]
           block[11..14].each do |it|
             next if it[0] != ''
-            it[0] = record[11]
-            it[1] = record[12]
-            it[2] = record[3]
+            it[0] = record[10]
+            it[1] = record[11]
+            it[2] = record[12]
             break
           end
-          block[3][1] = block[3][1].to_i + record[3].to_i # 总量
-          block[4][1] = block[2][1].to_i * block[3][1].to_i # 总市值
-          block[15][2] = block[3][1]
+#          block[3][1] = block[3][1].to_i + record[3].to_i # 总量
+#          block[4][1] = block[2][1].to_i * block[3][1].to_i # 总市值
+#          block[15][2] = block[3][1]
         else
+# 系列	海外预计入库		品牌	设计编号	国际款号	海外扩码	海外尺码范围	"海外市场价格"	颜色	色号	订单数量		"新加坡市场价格"	新加坡上市时间
+# "澳门市场价格"	澳门上市时间	"香港市场价格"	香港上市时间	"台湾市场价格"	台湾上市时间
           block = Array.new
-          block << ['设计号', record[0], '', xilie[0],'']
-          block << ['国内款号', record[1], '','','']
-          block << ['国内单价', record[2], '','','']
-          block << ['总量', record[3], '','','']
-          block << ['总市值', record[2].to_i*record[3].to_i, '','','']
-          block << ['上市时间', record[4].to_s.split(' ')[0].gsub(/\//,' '), record[5],'','']
-          block << ['国际款号', kuanhao, '','','']
-          block << ['尺码范围', record[7], '','','']
-          block << ['海外配发级别', '新加坡', '澳门','沙特','']
-          block << ['海外单价', record[8], record[9],record[10],'']
+          block << ['设计号', record[5], '', xilie[0],'']
+          block << ['国际款号', record[6], '','','']
+          block << ['RMB单价', record[9], '','','']
+          block << ['海外总量', '', '','','']
+          block << ['总市值', '', '','','']
+          block << ['预计入库', record[2],'','','']
+          block << ['国际扩码', record[7], '','','']
+          block << ['设计属性', '', '','','']
+          block << ['海外配发级别', '新加坡', '澳门','香港','台湾']
+          block << ['海外单价', record[14], record[16],record[18],record[20]]
+          block << ['预计上市', record[15], record[17],record[19],record[21]]
           block << ['颜色', '色号', '海外订单数','','']
-          block << [record[11], record[12], record[3],'','']
+          block << [record[10], record[11], record[12],'','']
           block << ['', '', '','','']
           block << ['', '', '','','']
           block << ['', '', '','','']
