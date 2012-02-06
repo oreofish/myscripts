@@ -1,8 +1,8 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-02 18:10:53 Yu Li>
+;; Time-stamp: <2011-11-24 18:28:07 Rick Xing>
 ;
 ; .emacs of Rick Xing
-;
+                                        ;
 
 ; F1 - ibuffer
 ; F2 - 2Column
@@ -41,7 +41,7 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; remove menu bar
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 
 ;; hide toolbar
 (tool-bar-mode -1)
@@ -180,6 +180,8 @@
 ;(set-frame-font "Courier 10 Pitch-12")
 (set-frame-font "Dejavu Sans Mono-9")
 ;(set-default-font "-misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-1")
+
+(load-file "~/.emacs.d/nxhtml/autostart.el")
 
 
 ;; load other settings
@@ -397,14 +399,16 @@ include-dirs))
           (setq gtags-path-style 'absolute)
           (local-set-key "\M-." 'gtags-find-tag-from-here)))
 
- ;; Enable EDE (Project Management) features
-; (global-ede-mode t)
-; (ede-cpp-root-project "rf-backup"
-;                       :name "rf-backup"
-;                       :file "~/data/online/kde/backup/CMakeLists.txt"
-;                       :include-path '("/lib"
-;                                       "/libharefs/src"
-;                                       "/sync-agent/src"))
+;; Enable EDE (Project Management) features
+ (global-ede-mode t)
+ (ede-cpp-root-project "rails-sample"
+                       :name "rails-sample"
+                       :file "~/git/sample/README"
+                       :include-path '("/app"
+                                       "/config"
+                                       "/script"
+                                       "/spec"
+                                       "/lib"))
 ; (ede-cpp-root-project "sourceinsight"
 ;                       :name "sinsight"
 ;                       :file "~/data/stage/sourceinsight/CMakeLists.txt"
@@ -658,7 +662,7 @@ int main(int argc, char* argv[])
 ;;(set-face-background 'default "midnightblue")
 ;;(set-face-foreground 'default "white")
 ;; parent match
-(set-face-background 'show-paren-match-face "DarkSlateGray4") 
+;(set-face-background 'show-paren-match-face "DarkSlateGray4") 
 
 ;;; END MISC SETTING
 
@@ -789,6 +793,9 @@ current window."
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
 ;;; for ruby mode
+(setq load-path (cons "~/.emacs.d/rdebug" load-path))
+(require 'rdebug)
+
 (setq interpreter-mode-alist (
                               append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))

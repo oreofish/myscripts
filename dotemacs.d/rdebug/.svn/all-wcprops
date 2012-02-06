@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/945/trunk/emacs
+END
+rdebug-vars.el
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/769/trunk/emacs/rdebug-vars.el
+END
+rdebug-frames.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/735/trunk/emacs/rdebug-frames.el
+END
+rdebug-gud.el
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/821/trunk/emacs/rdebug-gud.el
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/941/trunk/emacs/AUTHORS
+END
+rdebug-varbuf.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/711/trunk/emacs/rdebug-varbuf.el
+END
+rdebug-fns.el
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/769/trunk/emacs/rdebug-fns.el
+END
+rdebug-secondary.el
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/733/trunk/emacs/rdebug-secondary.el
+END
+rdebug-help.el
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/711/trunk/emacs/rdebug-help.el
+END
+rdebug-core.el
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/924/trunk/emacs/rdebug-core.el
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/942/trunk/emacs/README
+END
+rdebug-error.el
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/713/trunk/emacs/rdebug-error.el
+END
+rdebug-regexp.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/724/trunk/emacs/rdebug-regexp.el
+END
+rdebug-info.el
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/924/trunk/emacs/rdebug-info.el
+END
+rdebug-dbg.el
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/702/trunk/emacs/rdebug-dbg.el
+END
+rdebug-locring.el
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/917/trunk/emacs/rdebug-locring.el
+END
+rdebug-layouts.el
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/723/trunk/emacs/rdebug-layouts.el
+END
+rdebug-output.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/711/trunk/emacs/rdebug-output.el
+END
+rdebug-source.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/924/trunk/emacs/rdebug-source.el
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/942/trunk/emacs/INSTALL
+END
+rdebug.el
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/941/trunk/emacs/rdebug.el
+END
+rdebug-cmd.el
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/822/trunk/emacs/rdebug-cmd.el
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/941/trunk/emacs/Makefile.am
+END
+rdebug-track.el
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/924/trunk/emacs/rdebug-track.el
+END
+rdebug-watch.el
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/711/trunk/emacs/rdebug-watch.el
+END
+rdebug-breaks.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/945/trunk/emacs/rdebug-breaks.el
+END
+rdebug-shortkey.el
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/807/trunk/emacs/rdebug-shortkey.el
+END
+rdebug-annotate.el
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/924/trunk/emacs/rdebug-annotate.el
+END

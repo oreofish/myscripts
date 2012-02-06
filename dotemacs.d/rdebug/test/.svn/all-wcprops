@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/909/trunk/emacs/test
+END
+test-cmd.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/780/trunk/emacs/test/test-cmd.el
+END
+test-fns.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/769/trunk/emacs/test/test-fns.el
+END
+test-core.el
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/640/trunk/emacs/test/test-core.el
+END
+test-shortkey.el
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/807/trunk/emacs/test/test-shortkey.el
+END
+test-annotate.el
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/704/trunk/emacs/test/test-annotate.el
+END
+test-regexp.el
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/909/trunk/emacs/test/test-regexp.el
+END
+elk-test.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/524/trunk/emacs/test/elk-test.el
+END
+test-frames.el
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/702/trunk/emacs/test/test-frames.el
+END
+test-gud.el
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/669/trunk/emacs/test/test-gud.el
+END
+test-indent.el
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/713/trunk/emacs/test/test-indent.el
+END
