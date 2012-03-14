@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2012-03-14 21:19:19 Rick Xing>
+;; Time-stamp: <2012-03-15 00:39:16 Rick Xing>
 ;
 ; .emacs of Rick Xing
                                         ;
@@ -183,8 +183,17 @@
 
 (load-file "~/.emacs.d/nxhtml/autostart.el")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;; install el-get ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-;; load other settings
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
+;;;;;;;;;;;;;;;;;;;;; load other settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(load-file "~/.emacs.d/_emacs.tools.el")
 ;;(load-file "~/.emacs.d/_emacs.cygwin.el")
 ;;(load-file "~/.emacs.d/_emacs.wiki.el")

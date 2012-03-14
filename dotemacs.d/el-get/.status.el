@@ -1,0 +1,1 @@
+(:el-get "installed" :auto-complete "installed" :auto-complete-css "installed" :auto-complete-etags "installed" :auto-complete-ruby "installed" :cmake-mode "installed" :coffee-mode "installed" :ecb "required")
