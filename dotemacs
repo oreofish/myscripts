@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2011-11-24 18:28:07 Rick Xing>
+;; Time-stamp: <2012-03-14 21:19:19 Rick Xing>
 ;
 ; .emacs of Rick Xing
                                         ;
@@ -95,7 +95,7 @@
 (setq time-stamp-active t)
 (setq time-stamp-warn-inactive t)
 (add-hook 'write-file-hooks 'time-stamp)
-(setq time-stamp-format "%:y-%02m-%02d %02H:%02M:%02S Yu Li")
+(setq time-stamp-format "%:y-%02m-%02d %02H:%02M:%02S Rick Xing")
 
 ;; bind M-/ to hippie-expand
 (global-set-key [(meta ?/)] 'hippie-expand)
@@ -201,7 +201,6 @@
 ;;(load-file "~/.emacs.d/flymake.el")
 
 ;;;;;;;;;;;;ruby
-(load-file "~/.emacs.d/ruby-mode.el")
 (load-file "~/.emacs.d/inf-ruby.el")
 (load-file "~/.emacs.d/snippet.el")
 (load-file "~/.emacs.d/find-recursive.el")
@@ -886,6 +885,7 @@ occurence of CHAR."
                 ("\\.h$" .  c++-mode)
                 ("\\.hpp$" . c++-mode)
                 ("\\.c$" . c++-mode)
+                ("\\.scss$" . css-mode)
                 ) auto-mode-alist ))
 
 (require 'compile)
@@ -1279,3 +1279,14 @@ occurence of CHAR."
 ;         (symbol-name major-mode)))
 ;      )
 ;     )))
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
