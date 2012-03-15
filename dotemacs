@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp -*-
-;; Time-stamp: <2012-03-15 00:39:16 Rick Xing>
+;; Time-stamp: <2012-03-15 22:11:34 Rick Xing>
 ;
 ; .emacs of Rick Xing
                                         ;
@@ -192,6 +192,10 @@
    (lambda (s)
      (end-of-buffer)
      (eval-print-last-sexp))))
+
+;;;;;;;;;;;;;;;;;;;;;;coffee ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d/el-get/coffee-mode")
+(require 'coffee-mode)
 
 ;;;;;;;;;;;;;;;;;;;;; load other settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(load-file "~/.emacs.d/_emacs.tools.el")
