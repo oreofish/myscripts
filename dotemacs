@@ -336,6 +336,11 @@ the mru bookmark stack."
  (add-hook 'ruby-mode-hook 'my-cedet-hook)
  (add-hook 'emacs-lisp-mode-hook 'my-cedet-hook)
 
+;;;;;;;;;;;;;;;;;;;;;rails;;;;;;;;;;;;;;;;;;;;;;
+(setq load-path (cons "~/.emacs.d/rails" load-path)) 
+(require 'rails) 
+
+
 
 ;;;; Include settings
 (require 'semantic/bovine/gcc)
