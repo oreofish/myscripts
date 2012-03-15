@@ -1,0 +1,49 @@
+;; Object javascripts/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "javascripts/"
+  :tables (list 
+   (semanticdb-table "application.js"
+    :major-mode 'js-mode
+    :tags 
+        '( ("scrolltop" function nil nil [1098 1693]))          
+    :file "application.js"
+    :pointmax 3547
+    :fsize 3554
+    :lastmodtime '(20318 57913)
+    :unmatched-syntax '((PAREN_BLOCK 3417 . 3545) (DOT 3411 . 3412) (SEMICOLON 1693 . 1694) (VAR 1696 . 1699) (BRACE_BLOCK 1718 . 2417) (SEMICOLON 2417 . 2418) (VAR 2420 . 2423) (BRACE_BLOCK 2438 . 3397) (SEMICOLON 3397 . 3398) (VARIABLE 3400 . 3401) (PAREN_BLOCK 3401 . 3411))
+    )
+   (semanticdb-table "rednote_utils.js"
+    :major-mode 'js-mode
+    :tags 
+        '( ("setup_faye" function nil nil [7809 9112])
+            ("preview" function (:arguments 
+              ( ("el" variable nil (reparse-symbol FormalParameterList) [9327 9329])
+                ("size" variable nil (reparse-symbol FormalParameterList) [9330 9334])
+                ("coords" variable nil (reparse-symbol FormalParameterList) [9335 9341]))              ) nil [9310 9701])
+            ("update_crop" function (:arguments 
+              ( ("coords" variable nil (reparse-symbol FormalParameterList) [9724 9730]))              ) nil [9703 10111])
+            ("judge" function (:arguments 
+              ( ("box" variable nil (reparse-symbol FormalParameterList) [10129 10132])
+                ("value" variable nil (reparse-symbol FormalParameterList) [10133 10138]))              ) nil [10114 10854])
+            ("waring" function nil nil [10857 11029])
+            ("updatetimeprogress" function nil nil [11032 11594]))          
+    :file "rednote_utils.js"
+    :pointmax 11618
+    :fsize 11865
+    :lastmodtime '(20312 32722)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "notes.js"
+    :major-mode 'js-mode
+    :tags nil
+    :file "notes.js"
+    :pointmax 1172
+    :fsize 1195
+    :lastmodtime '(20319 3093)
+    :unmatched-syntax '((PAREN_BLOCK 2 . 1170))
+    )
+   )
+  :file "!home!jianxing!git!rednote!app!assets!javascripts!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.0"
+  )
